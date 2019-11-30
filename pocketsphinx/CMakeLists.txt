@@ -3,7 +3,7 @@ project(PocketSphinx)
 execute_process(COMMAND pkg-config --variable datadir sphinxbase OUTPUT_VARIABLE SB_DATADIR OUTPUT_STRIP_TRAILING_WHITESPACE)
 execute_process(COMMAND pkg-config --variable datadir pocketsphinx OUTPUT_VARIABLE PS_DATADIR OUTPUT_STRIP_TRAILING_WHITESPACE)
 add_custom_command(OUTPUT "ps.cpp"
-                   COMMAND swig -I${SB_DATADIR}/swig -javascript -node -DV8_VERSION=0x032872 -o ps.cpp ${PS_DATADIR}/swig/pocketsphinx.i
+                   COMMAND swig -I${SB_DATADIR}/swig -javascript -node -DV8_VERSION_MAJOR=7 -o ps.cpp ${PS_DATADIR}/swig/pocketsphinx.i
                    COMMENT "Generating swig bindings" )
 
 link_directories(${PROJECT_NAME} ${PS_LIBRARY_DIRS})
